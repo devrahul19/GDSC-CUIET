@@ -1,26 +1,7 @@
 Here's a sample `README.md` file for setting up and running a `server.js` file. This README will cover the basics of how to set up your environment, install dependencies, and start the server.
 
 ```markdown
-# Project Name
 
-## Description
-
-This project is a web application with a Node.js server. The `server.js` file sets up the backend server for handling various routes and functionalities.
-
-## Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-- [Node.js](https://nodejs.org/) (v14 or higher) installed on your machine.
-- [npm](https://www.npmjs.com/) (Node Package Manager) installed.
-
-## Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
-   ```
 
 2. **Install dependencies:**
 
@@ -28,18 +9,6 @@ Before you begin, ensure you have met the following requirements:
 
    ```bash
    npm install
-   ```
-
-3. **Set up environment variables:**
-
-   Create a `.env` file in the root of the project and configure your environment variables. Example `.env` file:
-
-   ```
-   PORT=3000
-   EMAIL_HOST=smtp.example.com
-   EMAIL_PORT=587
-   EMAIL_USER=your-email@example.com
-   EMAIL_PASS=your-email-password
    ```
 
 ## Running the Server
@@ -67,19 +36,7 @@ If you encounter issues, make sure to:
 - Ensure all environment variables are correctly set in the `.env` file.
 - Verify that all dependencies are installed properly by running `npm install` again.
 
-## Contributing
 
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a Pull Request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
 
 Feel free to modify the sections according to your specific project requirements and setup.
 ```
