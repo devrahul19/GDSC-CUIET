@@ -1,4 +1,5 @@
 
+// for the welcome transisitonss
 document.addEventListener('DOMContentLoaded', () => {
   const changingTextElement = document.querySelector('.changing-text');
   const texts = ["GDSC", "CUIET"];
@@ -32,35 +33,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   type();
 });
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contact-form');
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent the default form submission
+// Sending Mails(not public)
+document.addEventListener('submit', function(e) {
+  const formData = new FormData(form);
+  e.preventDefault();
 
-    // Create a FormData object from the form
-    const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
 
-    try {
-      // Send the form data to the server
-      const response = await fetch('/send-email', {
-        method: 'POST',
-        body: formData,
+  result.innerHTML = "Please wait..."
+
+  fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: json
+      })
+      .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+              result.innerHTML = json.message;
+          } else {
+              console.log(response);
+              result.innerHTML = json.message;
+          }
+      })
+      .catch(error => {
+          console.log(error);
+          result.innerHTML = "Something went wrong!";
+      })
+      .then(function() {
+          form.reset();
+          setTimeout(() => {
+              result.style.display = "none";
+          }, 3000);
       });
-
-      if (response.ok) {
-        // If the response is successful, show a success alert
-        alert('Message sent successfully!');
-        form.reset(); // Reset the form fields
-      } else {
-        // If the response is not successful, show an error alert
-        alert('Message sent successfully!');
-        // alert('There was a problem sending your message.');
-      }
-    } catch (error) {
-      // Handle any errors that occurred during the fetch
-      console.error('Error:', error);
-      alert('An error occurred while sending your message.');
-    }
-  });
 });
